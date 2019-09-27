@@ -1,0 +1,20 @@
+To install tensorflow for python in the computer, here’s some bugs I encountered and solution.
+Steps:
+Pip install tensorflow(-gpu)
+Pip install keras
+	1. Can’t pip install tensorflow:
+	The error message shown on the cmd when using “pip install --upgrade pip” to update pip:
+	Cache entry deserialization failed, entry ignored
+	Solution:
+	Use “conda update --all” to update all files in anaconda.
+	2. Error message:
+	Could not find cudart64_xx.dll : install CUDA, make sure environment variable is set and restart pycharm.
+	Could not find cudnn64_7.dll: install cuDNN and set environment variable.
+	In order to use tensorflow-gpu, you have to install both CUDA and cuDNN and make sure the environment variable include their path. (version of cuDNN has to match that of CUDA). You don’t have to set the environment variable for CUDA yourself, but you have to set it for cuDNN
+	Good to know: pip install --upgrade [PACKAGE] will upgrade the installed package.
+	3. Error message:
+	Process finished with exit code -1073741819 (0xC0000005)
+	Cause: installed a package named h5py, which is used in keras. When installing keras, it’s version is 2.8.0. Use pip install --upgrade h5py to upgrade this package to solve the problem.
+	4. Error message:
+	ModuleNotFoundError: No module named 'numpy.core._multiarray_umath'
+	Numpy version is outdated. Use “pip install --upgrade numpy”
